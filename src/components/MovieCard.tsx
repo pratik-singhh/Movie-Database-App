@@ -1,4 +1,5 @@
 import type { Movie } from "../types/movie"
+import { Link } from "react-router-dom";
 type Props = {
   movie: Movie
 }
@@ -7,14 +8,16 @@ function MovieCard(props: Props) {
 
   return (
     <>
+      <Link to={`/movie/${props.movie.id}`}>
 
-      <div className="border-2 p-4">
-        <img src={posterUrl} alt="" />
-        <h1>{props.movie.title}</h1>
-        <h1>{props.movie.vote_average.toFixed(1)}</h1>
-        <h1>{props.movie.release_date}</h1>
+        <div className="border-2 p-4 hover:shadow-xl hover:scale-105 transform-gpu transform ease-out transition duration-300">
+          <img src={posterUrl} alt="" />
+          <h1 className="mb-4">{props.movie.title}</h1>
+          <h1>{props.movie.vote_average.toFixed(1)}</h1>
+          <h1>{props.movie.release_date}</h1>
 
-      </div>
+        </div>
+      </Link>
 
     </>
   )
