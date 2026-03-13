@@ -39,11 +39,16 @@ function Home() {
 
   return (
     <>
-      <input value={searchTerm} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setSearchTerm(e.target.value); }} type="text" className="border-2 rounded-sm text-center m-3" placeholder="Search Movies" />
-      <h1 className="text-2xl">Trending Movies</h1>
-      {(loading === true) &&
+      <div className="items-center flex flex-col p-4">
 
-        <h1 className="text-2xl text-emerald-500">Loading</h1>
+        <input value={searchTerm} onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setSearchTerm(e.target.value); }} type="text" className="border-2 rounded-sm w-full text-center p-4 max-w-md m-3" placeholder="🔍Search Movies" />
+        <h1 className="text-2xl">Trending Movies</h1>
+      </div>
+      {(loading === true) &&
+        <div className="justify-center items-center flex">
+
+          <div className="w-10 h-10 rounded-full border-2 border-l-transparent flex items-center  animate-spin"></div>
+        </div>
       }
 
       {(movies.length === 0 && loading === false) &&

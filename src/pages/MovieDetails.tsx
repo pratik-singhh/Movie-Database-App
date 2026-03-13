@@ -44,7 +44,7 @@ function MovieDetails() {
         <div className="flex gap-16">
 
           <img className="mx-4 max-w-60" src={posterUrl} alt="" />
-          <div className="text-left">
+          <div className="border-2 p-2 rounded-lg text-left">
 
             <h1 className="mb-4 text-2xl ">{movie.title}</h1>
             <p className="mb-4 text-xl">{movie.vote_average.toFixed(1)}</p>
