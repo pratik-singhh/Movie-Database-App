@@ -2,22 +2,30 @@ import type { Movie } from "../types/movie"
 import { Link } from "react-router-dom";
 type Props = {
   movie: Movie
+  saved: boolean
+  toggleSaved: (idM: number) => void
+
 }
 function MovieCard(props: Props) {
   const posterUrl: string = "https://image.tmdb.org/t/p/w300" + props.movie.poster_path;
+  const addORremove: string = props.saved ? "Remove from watchlist" : "Add to watchlist";
+  const btnCLR: string = (!props.saved) ? "bg-green-300" : "bg-rose-300";
 
   return (
     <>
-      <Link to={`/movie/${props.movie.id}`}>
+      <div>
 
-        <div className="border-2  p-4 hover:shadow-xl shadow-gray-400 rounded-xl hover:scale-105 transform-gpu transform ease-out transition duration-300">
-          <img src={posterUrl} alt="" />
-          <h1 className="mb-4">{props.movie.title}</h1>
-          <h1>{props.movie.vote_average.toFixed(1)}</h1>
-          <h1>{props.movie.release_date}</h1>
+        <Link to={`/movie/${props.movie.id}`}>
 
-        </div>
-      </Link>
+          <div className="border-2  p-4 hover:shadow-xl shadow-gray-400 rounded-xl hover:scale-105 transform-gpu transform ease-out transition duration-300">
+            <img src={posterUrl} alt="" />
+            <h1 className="mb-4">{props.movie.title}</h1>
+            <h1>{props.movie.vote_average.toFixed(1)}</h1>
+            <h1>{props.movie.release_date} </h1>
+          </div>
+        </Link>
+        <button onClick={() => props.toggleSaved(props.movie.id)} className={`w-full ${btnCLR} m-2 p-2 cursor-pointer border-2 rounded-lg`}>{addORremove}</button>
+      </div>
 
     </>
   )
