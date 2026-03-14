@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# 🎬 Movie Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **React + TypeScript movie discovery app** that lets users browse trending movies and search for films using the TMDb API.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* 🔎 **Search movies** with debounced API requests
+* 🎥 **Trending movies** displayed on the home page
+* 📄 **Movie details page** with poster, rating, release date, and overview
+* ⚡ **Loading spinner** for smoother user experience
+* ❌ **No results state** when searches return empty
+* 🎨 **Responsive movie grid** with interactive hover animations
+* 🔗 **Dynamic routing** using React Router
+* 🧠 **Type-safe API handling** using TypeScript
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+* **React**
+* **TypeScript**
+* **React Router**
+* **Tailwind CSS**
+* **Vite**
+* **TMDb API**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📸 Screenshots
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Home Page(TBA...)
+
+Search Results(TBA...)
+
+Movie Details Page(TBA...)
+
+---
+
+## 🌐 Live Demo
+
+Deployed on Vercel:
+
+https://movie-database-app-alpha-liart.vercel.app/
+---
+
+## ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/pratik-singhh/Movie-Database-App.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Go into the project folder
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd Movie-Database-App
 ```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the project root:
+
+```
+VITE_TMDB_API_KEY=your_api_key_here
+```
+
+You can get an API key from **The Movie Database (TMDb)**.
+
+---
+
+## 📚 What I Learned
+
+While building this project I practiced:
+
+* Fetching and handling **REST APIs**
+* Creating **reusable React components**
+* Implementing **debounced search**
+* Managing UI states like **loading and empty results**
+* Using **TypeScript for type safety**
+* Building responsive layouts with **Tailwind CSS**
+* Implementing **dynamic routing** with React Router
+
+---
+
+## 🧑‍💻 Author
+
+Pratik Thakur
+
+GitHub: https://github.com/pratik-singhh
