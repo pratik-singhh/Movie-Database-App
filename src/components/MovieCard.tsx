@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 type Props = {
   movie: Movie
   saved: boolean
-  toggleSaved: (idM: number) => void
-
+  toggleSaved: (cinema: Movie) => void
 }
 function MovieCard(props: Props) {
   const posterUrl: string = "https://image.tmdb.org/t/p/w300" + props.movie.poster_path;
@@ -24,7 +23,7 @@ function MovieCard(props: Props) {
             <h1>{props.movie.release_date} </h1>
           </div>
         </Link>
-        <button onClick={() => props.toggleSaved(props.movie.id)} className={`w-full ${btnCLR} m-2 p-2 cursor-pointer border-2 rounded-lg`}>{addORremove}</button>
+        <button onClick={() => props.toggleSaved(props.movie)} className={`w-full ${btnCLR} m-2 p-2 cursor-pointer border-2 rounded-lg`}>{addORremove}</button>
       </div>
 
     </>

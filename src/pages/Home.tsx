@@ -3,29 +3,22 @@ import type { Movie } from "../types/movie";
 import { Link } from "react-router-dom";
 import { getTrendingMovies, searchMovies } from "../services/movieApi";
 import MovieCard from "../components/MovieCard";
-function Home() {
+
+
+type Props = {
+
+  watchlist: Movie[]
+  toggleWatchlist: (movie: Movie) => void
+
+}
+
+function Home(props: Props) {
+  const { watchlist, toggleWatchlist } = props;
   const [movies, setMovies] = useState<Movie[]>([]);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [watchlist, setWatchList] = useState<Movie[]>([]);
-
-  function toggleWatchlist(idM: number) {
-    if (watchlist.some((m) => m.id === idM)) {
-
-      setWatchList((WL) => WL.filter((m) => m.id !== idM));
-    }
-    else {
-      const newEntry = movies.find((m) => m.id === idM);
-      if (newEntry !== undefined) {
-        setWatchList(oldList => [...oldList, newEntry]);
-      }
-    }
-
-
-
-  }
 
   useEffect(() => {
 
@@ -54,21 +47,6 @@ function Home() {
     }
   }, [searchTerm])
 
-  useEffect(() => {
-    let unparsedWatchList = localStorage.getItem("watchlist");
-    if (unparsedWatchList !== null) {
-      const parsedWatchList = JSON.parse(unparsedWatchList);
-      setWatchList(parsedWatchList);
-    }
-  }, [])
-
-  useEffect(() => {
-    if (watchlist.length > 0) {
-      const stringedWL = JSON.stringify(watchlist);
-      localStorage.setItem("watchlist", stringedWL);
-    }
-
-  }, [watchlist])
 
 
 
