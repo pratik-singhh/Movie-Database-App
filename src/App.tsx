@@ -10,7 +10,16 @@ function App() {
 
 
 
-  const [watchlist, setWatchList] = useState<Movie[]>([]);
+  const [watchlist, setWatchList] = useState<Movie[]>(() => {
+    let badData = localStorage.getItem("watchlist");
+    if (badData !== null) {
+      let goodData = JSON.parse(badData);
+      return goodData;
+    }
+    else {
+      return [];
+    }
+  });
 
   function toggleWatchlist(movie: Movie) {
     if (watchlist.some((m) => m.id === movie.id)) {
@@ -25,13 +34,6 @@ function App() {
   }
 
 
-  useEffect(() => {
-    let unparsedWatchList = localStorage.getItem("watchlist");
-    if (unparsedWatchList !== null) {
-      const parsedWatchList = JSON.parse(unparsedWatchList);
-      setWatchList(parsedWatchList);
-    }
-  }, [])
 
   useEffect(() => {
     const stringedWL = JSON.stringify(watchlist);
@@ -58,7 +60,7 @@ function App() {
 
           <Route path="/movie/:id"
             element={
-              <MovieDetails />
+              <MovieDetails watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
             } />
           <Route path="/watchlist"
             element={

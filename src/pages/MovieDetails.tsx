@@ -2,7 +2,12 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 import type { Movie } from "../types/movie";
 import { useState, useEffect } from "react";
-function MovieDetails() {
+type Props = {
+  toggleWatchlist: (movie: Movie) => void
+  watchlist: Movie[]
+}
+function MovieDetails(props: Props) {
+
   let params = useParams();
   const movieId = params.id;
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -33,6 +38,10 @@ function MovieDetails() {
     );
   }
 
+
+  const addORremove: string = (props.watchlist.some((m) => m.id === movie.id)) ? "Remove from watchlist" : "Add to watchlist";
+  const btnCLR: string = (!props.watchlist.some((m) => m.id === movie.id)) ? "bg-green-300" : "bg-rose-300";
+
   const posterUrl: string = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
   return (
     <>
@@ -43,7 +52,13 @@ function MovieDetails() {
 
         <div className="flex gap-16">
 
-          <img className="mx-4 max-w-60" src={posterUrl} alt="" />
+          <div>
+
+            <img className="mx-4 max-w-60" src={posterUrl} alt="" />
+
+            <button onClick={() => props.toggleWatchlist(movie)} className={`w-full ${btnCLR} m-2 p-2 cursor-pointer border-2 rounded-lg`}>{addORremove}</button>
+          </div>
+
           <div className="border-2 p-2 rounded-lg text-left mx-auto">
 
             <h1 className="mb-4 text-2xl ">{movie.title}</h1>
